@@ -2,7 +2,7 @@
 
 Gamifiziertes Quiz im Duolingo-Stil mit Apple-Optik zur Vorbereitung auf die Zertifizierung **AWS Certified AI Practitioner**. 15 Fragen zu den Prüfungsbereichen, mit Leben, XP, Serien-Bonus und Sternen.
 
-**Live-Version:** https://deniassis.github.io/aws-ai-practitioner-quiz/
+**▶️ [Jetzt spielen: deniassis.github.io/aws-ai-practitioner-quiz](https://deniassis.github.io/aws-ai-practitioner-quiz/)**
 
 ![Spielbildschirm mit Frage und ausgewählter Antwort](./docs/screenshot.png)
 
