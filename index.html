@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="de-DE">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Gamifiziertes Quiz mit 15 Fragen zur Vorbereitung auf AWS Certified AI Practitioner.">
+  <meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+  <title>AWS AI Practitioner Quiz</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%AD%90%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main class="app">
+
+    <!-- Startbildschirm -->
+    <section id="screen-start" class="screen screen-start" aria-labelledby="start-title">
+      <header class="start-header">
+        <h1 id="start-title" class="start-title">AWS AI Practitioner Quiz</h1>
+        <p class="start-subtitle">15 Fragen, um dein Wissen über KI auf AWS zu prüfen</p>
+      </header>
+
+      <ul class="summary-cards" aria-label="Spielübersicht">
+        <li class="summary-card">
+          <span class="summary-icon" aria-hidden="true">❤️</span>
+          <span class="summary-value">5</span>
+          <span class="summary-label">Leben</span>
+        </li>
+        <li class="summary-card">
+          <span class="summary-icon" aria-hidden="true">📝</span>
+          <span class="summary-value">15</span>
+          <span class="summary-label">Fragen</span>
+        </li>
+        <li class="summary-card">
+          <span class="summary-icon" aria-hidden="true">⭐</span>
+          <span class="summary-value">XP</span>
+          <span class="summary-label">und Sterne</span>
+        </li>
+      </ul>
+
+      <p class="best-score">
+        Bestleistung: <strong id="best-score-value">–</strong>
+      </p>
+
+      <button type="button" id="btn-start" class="btn btn-primary btn-large">Starten</button>
+    </section>
+
+    <!-- Spielbildschirm -->
+    <section id="screen-quiz" class="screen screen-quiz" aria-labelledby="question-text" hidden>
+      <header class="quiz-topbar">
+        <button type="button" id="btn-close" class="btn-icon btn-close" aria-label="Quiz beenden">
+          <span aria-hidden="true">✕</span>
+        </button>
+
+        <div class="progress"
+             id="progress"
+             role="progressbar"
+             aria-label="Fortschritt"
+             aria-valuemin="0"
+             aria-valuemax="15"
+             aria-valuenow="0">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+
+        <p class="lives">
+          <span class="lives-icon" aria-hidden="true">❤️</span>
+          <span id="lives-count" class="lives-count" aria-hidden="true">5</span>
+          <span id="lives-label" class="visually-hidden">Du hast noch 5 Leben.</span>
+        </p>
+      </header>
+
+      <div class="quiz-body">
+        <p id="question-domain" class="domain-tag"></p>
+        <h2 id="question-text" class="question-text"></h2>
+
+        <div id="options"
+             class="options"
+             role="radiogroup"
+             aria-labelledby="question-text">
+          <!-- Antwortbuttons (role="radio") werden von app.js erzeugt -->
+        </div>
+      </div>
+
+      <footer class="quiz-footer">
+        <button type="button" id="btn-check" class="btn btn-primary btn-large" disabled>Überprüfen</button>
+      </footer>
+
+      <aside id="feedback" class="feedback" aria-live="polite" aria-labelledby="feedback-title" aria-describedby="feedback-explanation" hidden>
+        <div class="feedback-content">
+          <h3 id="feedback-title" class="feedback-title"></h3>
+          <p id="feedback-explanation" class="feedback-explanation"></p>
+          <button type="button" id="btn-continue" class="btn btn-large btn-continue">Weiter</button>
+        </div>
+      </aside>
+    </section>
+
+    <!-- Ergebnisbildschirm -->
+    <section id="screen-result" class="screen screen-result" aria-labelledby="result-title" hidden>
+      <div id="result-emoji" class="result-emoji" aria-hidden="true">🏆</div>
+      <h2 id="result-title" class="result-title"></h2>
+
+      <p id="result-stars" class="result-stars" role="img" aria-label="0 von 3 Sternen">
+        <span class="star" aria-hidden="true">★</span>
+        <span class="star" aria-hidden="true">★</span>
+        <span class="star" aria-hidden="true">★</span>
+      </p>
+
+      <dl class="result-stats">
+        <div class="stat">
+          <dt class="stat-label">XP gesamt</dt>
+          <dd id="result-xp" class="stat-value">0</dd>
+        </div>
+        <div class="stat">
+          <dt class="stat-label">Genauigkeit</dt>
+          <dd id="result-accuracy" class="stat-value">0 %</dd>
+        </div>
+        <div class="stat">
+          <dt class="stat-label">Längste Serie</dt>
+          <dd id="result-streak" class="stat-value">0</dd>
+        </div>
+      </dl>
+
+      <div class="result-actions">
+        <button type="button" id="btn-restart" class="btn btn-primary btn-large">Nochmal spielen</button>
+        <button type="button" id="btn-retry-wrong" class="btn btn-secondary btn-large">Falsche wiederholen</button>
+      </div>
+
+      <p class="disclaimer">
+        Eigene Fragen, angelehnt an die Prüfungsbereiche. Es handelt sich nicht um echte Prüfungsfragen.
+      </p>
+    </section>
+
+  </main>
+
+  <script src="./questions.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+# Betriebssystem
+.DS_Store
+
+# Abhängigkeiten
+node_modules/
+
+# Logs
+*.log
